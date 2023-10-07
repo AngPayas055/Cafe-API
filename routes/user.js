@@ -125,7 +125,8 @@ router.get('/checkToken', auth.authenticateToken, (req, res) => {
     return res.status(200).json({ message: "true" })
 })
 
-router.post('/changePassword',  auth.authenticateToken,(req, res) => {
+router.post('/changePassword', auth.authenticateToken,(req, res) => {
+    console.log('from jwt',res.locals)
     const user = req.body;
     const email = res.locals.email;//auth.authenticateToken is where email comming from
     var query = "select * from user where email=? and password=?";
